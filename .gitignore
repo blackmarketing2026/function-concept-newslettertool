@@ -1,0 +1,12 @@
+/vendor/
+/.env
+/node_modules/
+/logs/*.log
+/storage/dkim/*.key
+!/storage/dkim/.gitkeep
+.phpunit.result.cache
+/build/
+/coverage/
+.DS_Store
+Thumbs.db
+*.swp

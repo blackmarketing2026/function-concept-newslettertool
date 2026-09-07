@@ -1,0 +1,42 @@
+{
+    "name": "function-concept/newsletter",
+    "description": "Self-hosted Email Marketing System fuer Shared Hosting (PHP 8.2+/8.3, MySQL 8/MariaDB 10.6+)",
+    "type": "project",
+    "license": "proprietary",
+    "require": {
+        "php": "^8.2",
+        "ext-pdo": "*",
+        "ext-json": "*",
+        "ext-mbstring": "*",
+        "ext-openssl": "*",
+        "monolog/monolog": "^3.0",
+        "vlucas/phpdotenv": "^5.0",
+        "phpmailer/phpmailer": "^6.8",
+        "symfony/console": "^6.0",
+        "symfony/process": "^6.0",
+        "phpstan/phpstan": "^1.10"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^10.0",
+        "mockery/mockery": "^1.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "phpunit",
+        "stan": "phpstan analyse src --level=6",
+        "verify": "php verify-hosting.php"
+    },
+    "config": {
+        "sort-packages": true,
+        "optimize-autoloader": true
+    }
+}

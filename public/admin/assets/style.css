@@ -1,0 +1,5 @@
+body { background-color: #f4f6f9; }
+.card { border: none; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+.stat-card .display-6 { font-weight: 600; }
+.badge-tag { font-size: 0.75rem; margin-right: 4px; }
+.table-responsive { background: #fff; border-radius: 6px; }
