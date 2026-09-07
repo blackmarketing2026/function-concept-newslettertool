@@ -115,7 +115,7 @@ require __DIR__ . '/_header.php';
                     <tbody>
                     <?php foreach ($recentCampaigns as $c): ?>
                         <tr>
-                            <td><a href="/admin/campaigns.php?id=<?= (int) $c['id'] ?>"><?= htmlspecialchars($c['name']) ?></a></td>
+                            <td><a href="campaigns.php?id=<?= (int) $c['id'] ?>"><?= htmlspecialchars($c['name']) ?></a></td>
                             <td><span class="badge bg-secondary"><?= htmlspecialchars($c['status']) ?></span></td>
                             <td><?= (int) $c['audience_count'] ?></td>
                         </tr>

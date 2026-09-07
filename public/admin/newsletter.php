@@ -133,7 +133,7 @@ require __DIR__ . '/_header.php';
 <?php if ($flash): ?>
     <div class="alert alert-<?= $flash['type'] ?>"><?= htmlspecialchars($flash['text']) ?>
         <?php if ($createdCampaignId): ?>
-            <a href="/admin/campaigns.php?id=<?= $createdCampaignId ?>" class="alert-link">Live-Tracking ansehen →</a>
+            <a href="campaigns.php?id=<?= $createdCampaignId ?>" class="alert-link">Live-Tracking ansehen →</a>
         <?php endif; ?>
     </div>
 <?php endif; ?>
@@ -150,7 +150,7 @@ require __DIR__ . '/_header.php';
             <?php endforeach; ?>
         </select>
         <?php if ($templates === []): ?>
-            <div class="form-text text-danger">Keine Templates vorhanden. <a href="/admin/templates.php">Erst ein Template anlegen</a>.</div>
+            <div class="form-text text-danger">Keine Templates vorhanden. <a href="templates.php">Erst ein Template anlegen</a>.</div>
         <?php endif; ?>
     </div>
     <div class="mb-3">

@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['admin_authenticated'] = true;
         $_SESSION['admin_username'] = $username;
         $app->auditLogger()->log($username, 'admin.login', null, null, [], $_SERVER['REMOTE_ADDR'] ?? null);
-        header('Location: /admin/index.php');
+        header('Location: index.php');
         exit;
     }
 

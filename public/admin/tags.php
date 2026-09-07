@@ -63,7 +63,7 @@ require __DIR__ . '/_header.php';
                     <tr>
                         <td><span class="badge" style="background-color: <?= htmlspecialchars($tag['color']) ?>"><?= htmlspecialchars($tag['name']) ?></span></td>
                         <td class="text-secondary small"><?= htmlspecialchars($tag['description'] ?? '') ?></td>
-                        <td><a href="/admin/contacts.php?q=&status=" class="badge bg-light text-dark border"><?= (int) $tag['contact_count'] ?></a></td>
+                        <td><a href="contacts.php?q=&status=" class="badge bg-light text-dark border"><?= (int) $tag['contact_count'] ?></a></td>
                         <td>
                             <?php if (! $tag['is_system']): ?>
                                 <form method="post" onsubmit="return confirm('Tag wirklich loeschen?');">

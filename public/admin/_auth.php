@@ -18,6 +18,6 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
 $app = Bootstrap::boot();
 
 if (empty($_SESSION['admin_authenticated'])) {
-    header('Location: /admin/login.php');
+    header('Location: login.php');
     exit;
 }

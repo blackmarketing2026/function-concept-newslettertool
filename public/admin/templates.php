@@ -32,13 +32,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $flash = 'Template erstellt.';
         }
         $app->auditLogger()->log($_SESSION['admin_username'], 'template.saved', 'template', $id);
-        header('Location: /admin/templates.php?edit=' . $id);
+        header('Location: templates.php?edit=' . $id);
         exit;
     }
 
     if ($action === 'delete_template' && ! empty($_POST['id'])) {
         $pdo->prepare('DELETE FROM templates WHERE id = :id')->execute(['id' => (int) $_POST['id']]);
-        header('Location: /admin/templates.php');
+        header('Location: templates.php');
         exit;
     }
 }
@@ -59,7 +59,7 @@ require __DIR__ . '/_header.php';
 
 <div class="d-flex justify-content-between align-items-center mb-3">
     <h1 class="h3 mb-0">🎨 Templates</h1>
-    <a href="/admin/templates.php" class="btn btn-primary btn-sm">+ Neues Template</a>
+    <a href="templates.php" class="btn btn-primary btn-sm">+ Neues Template</a>
 </div>
 
 <?php if ($flash): ?><div class="alert alert-success"><?= htmlspecialchars($flash) ?></div><?php endif; ?>
@@ -68,7 +68,7 @@ require __DIR__ . '/_header.php';
     <div class="col-md-4">
         <div class="list-group mb-3">
             <?php foreach ($templates as $t): ?>
-                <a href="/admin/templates.php?edit=<?= (int) $t['id'] ?>" class="list-group-item list-group-item-action <?= $editId === (int) $t['id'] ? 'active' : '' ?>">
+                <a href="templates.php?edit=<?= (int) $t['id'] ?>" class="list-group-item list-group-item-action <?= $editId === (int) $t['id'] ? 'active' : '' ?>">
                     <?= htmlspecialchars($t['name']) ?>
                     <div class="small text-secondary"><?= htmlspecialchars($t['subject'] ?? '') ?></div>
                 </a>

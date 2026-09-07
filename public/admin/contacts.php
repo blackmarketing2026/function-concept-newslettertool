@@ -97,7 +97,7 @@ require __DIR__ . '/_header.php';
 <div class="d-flex justify-content-between align-items-center mb-3">
     <h1 class="h3 mb-0">👥 Kontakte <span class="text-secondary fs-6">(<?= $total ?>)</span></h1>
     <div>
-        <a href="/api/contacts/export" class="btn btn-outline-secondary btn-sm">CSV Export</a>
+        <a href="../api/contacts/export" class="btn btn-outline-secondary btn-sm">CSV Export</a>
         <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#importModal">CSV Import</button>
     </div>
 </div>

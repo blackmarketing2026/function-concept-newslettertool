@@ -31,7 +31,7 @@ if ($campaignId !== null) {
         $events->execute(['id' => $campaignId]);
         $eventCounts = array_column($events->fetchAll(), 'c', 'event_type');
         ?>
-        <a href="/admin/campaigns.php" class="btn btn-sm btn-outline-secondary mb-3">← Zurueck</a>
+        <a href="campaigns.php" class="btn btn-sm btn-outline-secondary mb-3">← Zurueck</a>
         <h1 class="h3"><?= htmlspecialchars($campaign['name']) ?></h1>
         <p><span class="badge bg-secondary"><?= htmlspecialchars($campaign['status']) ?></span></p>
 
@@ -58,7 +58,7 @@ if ($campaignId !== null) {
     ?>
     <div class="d-flex justify-content-between align-items-center mb-3">
         <h1 class="h3 mb-0">📢 Kampagnen</h1>
-        <a href="/admin/newsletter.php" class="btn btn-primary btn-sm">+ Neue Kampagne / Newsletter</a>
+        <a href="newsletter.php" class="btn btn-primary btn-sm">+ Neue Kampagne / Newsletter</a>
     </div>
 
     <div class="table-responsive">
@@ -67,7 +67,7 @@ if ($campaignId !== null) {
             <tbody>
             <?php foreach ($campaigns as $c): ?>
                 <tr>
-                    <td><a href="/admin/campaigns.php?id=<?= (int) $c['id'] ?>"><?= htmlspecialchars($c['name']) ?></a></td>
+                    <td><a href="campaigns.php?id=<?= (int) $c['id'] ?>"><?= htmlspecialchars($c['name']) ?></a></td>
                     <td><?= htmlspecialchars($c['type']) ?></td>
                     <td><span class="badge bg-<?= $c['status'] === 'sent' ? 'success' : ($c['status'] === 'sending' ? 'info' : 'secondary') ?>"><?= htmlspecialchars($c['status']) ?></span></td>
                     <td><?= (int) $c['audience_count'] ?></td>
@@ -75,7 +75,7 @@ if ($campaignId !== null) {
                 </tr>
             <?php endforeach; ?>
             <?php if ($campaigns === []): ?>
-                <tr><td colspan="5" class="text-center text-secondary py-4">Noch keine Kampagnen. <a href="/admin/newsletter.php">Jetzt erste Kampagne erstellen</a>.</td></tr>
+                <tr><td colspan="5" class="text-center text-secondary py-4">Noch keine Kampagnen. <a href="newsletter.php">Jetzt erste Kampagne erstellen</a>.</td></tr>
             <?php endif; ?>
             </tbody>
         </table>
