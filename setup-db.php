@@ -71,23 +71,30 @@ try {
         throw new RuntimeException('Schema-Datei konnte nicht gelesen werden.');
     }
 
-    // Statements splitten (einfacher Split an Semikolon-Zeilenenden; Schema enthaelt kein
-    // verschachteltes ';' innerhalb von Strings/JSON-Defaults).
-    $statements = array_filter(array_map('trim', explode(";\n", $sql)));
+    // Kommentarzeilen (-- ...) vorab entfernen, damit sie keine folgenden
+    // CREATE-TABLE-Statements "verschlucken" (Kommentare enden nicht mit ';',
+    // wuerden sonst mit dem naechsten echten Statement in einem Chunk landen).
+    $sqlWithoutComments = preg_replace('/^\s*--.*$/m', '', $sql);
+
+    // Statements an Semikolon splitten (Schema enthaelt kein verschachteltes ';'
+    // innerhalb von Strings/JSON-Defaults).
+    $statements = array_filter(array_map('trim', explode(';', $sqlWithoutComments)));
 
     out(sprintf('Fuehre %d SQL-Statements aus ...', count($statements)));
 
-    $pdo->beginTransaction();
+    // Kein explizites Transaction-Wrapping: DDL-Statements (CREATE TABLE) loesen
+    // in MySQL/MariaDB einen impliziten COMMIT aus, eine uebergreifende Transaktion
+    // waere dadurch ohnehin wirkungslos und fuehrt nur zu "no active transaction"
+    // Fehlern. Jedes Statement ist einzeln sicher dank "IF NOT EXISTS" / "IGNORE".
     $executed = 0;
     foreach ($statements as $statement) {
         $statement = trim($statement);
-        if ($statement === '' || str_starts_with($statement, '--')) {
+        if ($statement === '') {
             continue;
         }
         $pdo->exec($statement);
         $executed++;
     }
-    $pdo->commit();
 
     out(sprintf('Fertig. %d Statements ausgefuehrt.', $executed));
 

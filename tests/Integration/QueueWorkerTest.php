@@ -151,7 +151,7 @@ final class QueueWorkerTest extends TestCase
 
         $stmt = $this->pdo->prepare('SELECT COUNT(*) FROM suppression_list WHERE email = :e AND reason = "hard_bounce"');
         $stmt->execute(['e' => $emails[0]]);
-        $this->assertSame('1', $stmt->fetchColumn());
+        $this->assertSame(1, (int) $stmt->fetchColumn());
 
         $status = $this->pdo->prepare("SELECT status FROM email_queue WHERE recipient_email = :e");
         $status->execute(['e' => $emails[0]]);

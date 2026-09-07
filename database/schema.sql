@@ -216,13 +216,13 @@ CREATE TABLE IF NOT EXISTS campaign_steps (
 -- ----------------------------------------------------------------------------
 CREATE TABLE IF NOT EXISTS email_queue (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    campaign_id INT NOT NULL,
+    campaign_id BIGINT NOT NULL,
     contact_id BIGINT NULL,
     recipient_email VARCHAR(255) NOT NULL,
     subject VARCHAR(255) NOT NULL,
     body_html LONGTEXT,
     body_text TEXT,
-    template_id INT,
+    template_id BIGINT,
     sender_email VARCHAR(255),
 
     -- Status Tracking
